@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-video"></i> Face Recognition System</h1>
+            <div class="status-indicators">
+                <div class="status-item">
+                    <i class="fas fa-camera" id="camera-icon"></i>
+                    <span id="camera-status">Camera Off</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-search" id="detection-icon"></i>
+                    <span id="detection-status">Detection Off</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-user-check" id="recognition-icon"></i>
+                    <span id="recognition-status">Recognition Off</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="video-section">
+                <div class="video-container">
+                    <img id="video-feed" src="{{ url_for('video_feed') }}" alt="Video Feed">
+                    <div class="video-overlay">
+                        <div class="recording-indicator" id="recording-indicator">
+                            <i class="fas fa-circle"></i>
+                            <span>LIVE</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="start-camera" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Start Camera
+                    </button>
+                    <button id="stop-camera" class="btn btn-secondary">
+                        <i class="fas fa-stop"></i> Stop Camera
+                    </button>
+                    <button id="toggle-detection" class="btn btn-success">
+                        <i class="fas fa-search"></i> Toggle Detection
+                    </button>
+                    <button id="toggle-recognition" class="btn btn-info">
+                        <i class="fas fa-user-check"></i> Toggle Recognition
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="stats-panel">
+                    <h3><i class="fas fa-chart-bar"></i> System Stats</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">Registered Faces:</span>
+                        <span class="stat-value" id="total-faces">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Recent Recognitions:</span>
+                        <span class="stat-value" id="recent-recognitions">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Camera Status:</span>
+                        <span class="stat-value" id="camera-active">Inactive</span>
+                    </div>
+                </div>
+
+                <div class="recognition-panel">
+                    <h3><i class="fas fa-history"></i> Recognition History</h3>
+                    <div id="recognition-results" class="recognition-list">
+                        <div class="no-results">No recognitions yet</div>
+                    </div>
+                </div>
+
+                <div class="settings-panel">
+                    <h3><i class="fas fa-cog"></i> Settings</h3>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" id="auto-recognition"> 
+                            Auto Recognition
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" id="show-confidence"> 
+                            Show Confidence
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="range" id="confidence-threshold" min="0" max="100" value="50">
+                            Confidence Threshold: <span id="threshold-value">50</span>%
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
