@@ -1,5 +1,16 @@
 # OpenCV-Face-Recognition
 Real-time face recognition project with OpenCV and Python
+
+## 🆕 Web UI Available!
+A beautiful, modern web interface is now available for this project! Check out the `web-ui` directory for a React + Flask based UI with real-time face detection and recognition.
+
+### Quick Start Web UI:
+```bash
+cd web-ui
+./start.sh
+```
+Then open http://localhost:3000 in your browser.
+
 <br><br>
 Links for complete Tutorial:
 <br>
